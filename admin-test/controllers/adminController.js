@@ -34,6 +34,12 @@ router.get("/trainers", function(req, res){
 });
 });
 
+router.get("/scheduler", function(req, res){
+    manage.allClasses(function(data) {
+    res.json({ classes: data });
+});
+});
+
 router.delete("/members/id/:id", function(req, res) {
     var condition = "id = " + req.params.id;
     console.log(req.params.id);
@@ -57,6 +63,19 @@ router.delete("/members/id/:id", function(req, res) {
         });
     });
     });
+
+    router.post("/scheduler/add", function(req, res){
+        // var classID = req.params.id;
+        console.log(req.body);
+        manage.createNewClass([
+            "nameOfClass"
+        ], [
+            req.body.addClass.nameOfClass
+        ], function(result) {
+            res.json({ id: result.insertId});
+        });
+    });
+   
 
 module.exports = router;
 

@@ -24,6 +24,19 @@ var admin = {
         });
     },
 
+    allClasses: function(cb) {
+        orm.allClasses("classesTable", function(res) {
+            cb(res);
+        });
+    },
+
+    createNewClass: function(cols, vals, cb) { 
+        console.log("add new class admin");
+        orm.createNewClass("classesTable", cols, vals, function(res) {
+            cb(res);
+    });
+    },
+
     delete: function(condition, cb) {
         console.log("delete member");
         orm.delete("membersTable", condition, function(res){

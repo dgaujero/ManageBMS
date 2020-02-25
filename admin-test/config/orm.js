@@ -75,6 +75,33 @@ var orm = {
         });
       },
 
+      allClasses: function(tableInput, cb) { //trainers
+        var queryString = "SELECT * FROM " + tableInput + ";";
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+          cb(result);
+        });
+      },
+
+      createNewClass: function(table, cols, vals, cb) { //class
+        var queryString = "INSERT INTO " + table;
+        queryString += " (";
+        queryString += cols.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += printQuestionMarks(vals.length);
+        queryString += ");";
+        console.log(queryString)
+        connection.query(queryString, vals, function(err, result) {
+          if (err) {
+            throw err;
+          }
+          cb(result);
+        });
+      },
+
       delete: function(table, condition, cb) {// delete members
         var deleteString = "DELETE FROM " + table;
         // var deleteString = "DELETE FROM membersTable WHERE id = " + id + ";";
