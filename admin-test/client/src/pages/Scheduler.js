@@ -125,7 +125,8 @@ class Scheduler extends Component {
                     key={classUpdate.id}>
                       {/* <a href={"/members/:id" + member.id}> */}
                         <strong>
-                          {classUpdate.nameOfClass} 
+                          {classUpdate.nameOfClass} {classUpdate.classType}
+                {classUpdate.assignedTrainer} {classUpdate.classSize}
                         </strong>
                       {/* </a> */}
                       <ModalTemplate id={classUpdate.id} updateClass={this.updateClass}/>

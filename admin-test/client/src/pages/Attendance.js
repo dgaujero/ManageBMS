@@ -30,6 +30,8 @@ class Attendance extends Component {
         return this.state.checkedIn.map(member => (
           <div key={member.id}>
             {member.name}
+            { member.purpose }
+            { member.timestamp }
           </div>
         ))
       }

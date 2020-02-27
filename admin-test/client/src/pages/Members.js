@@ -63,8 +63,8 @@ class Members extends Component {
   render() {
     return (
       <div>
-        <h1>hello</h1>
-        Members: {this.renderMember()}
+        <h1>Hello Members</h1>
+        {/* {this.renderMember()} */}
 
         {this.state.members.length ? (
               <List>
@@ -74,7 +74,10 @@ class Members extends Component {
                     key={member.id}>
                       {/* <a href={"/members/:id" + member.id}> */}
                         <strong>
-                          {member.firstName} {member.lastName}
+                          {member.firstName} {member.lastName} {member.username}
+                          {member.password} {member.phoneNum} {member.bday} 
+                          {member.address} {member.email} {member.emergName}
+                          {member.emergNum}
                         </strong>
                       {/* </a> */}
                       <button type="submit" onClick={e => this.deleteMember(e, member.id)}>Delete</button>
