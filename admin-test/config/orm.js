@@ -102,6 +102,21 @@ var orm = {
         });
       },
 
+      update: function(table, cols, condition, cb) {
+        var queryString = "UPDATE " + table;
+        queryString += " SET ";
+        queryString += objToSql(cols);
+        queryString += " WHERE " + condition;
+        console.log(queryString)
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+          cb(result);
+        });
+      },
+
+
       delete: function(table, condition, cb) {// delete members
         var deleteString = "DELETE FROM " + table;
         // var deleteString = "DELETE FROM membersTable WHERE id = " + id + ";";

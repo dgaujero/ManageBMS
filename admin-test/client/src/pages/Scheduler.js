@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from 'axios';
 import Input from '../components/Form/Input'
 import FormButton from '../components/Form/FormButton'
+import List from '../components/List/List'
+import ListItem from '../components/List/ListItem'
+import ModalTemplate from '../components/Modal/Modal'
 
 class Scheduler extends Component {
     constructor(props) {
@@ -51,6 +54,16 @@ class Scheduler extends Component {
             console.log(res.data);
         })
       }
+
+      updateClass = (e,data) => {
+        e.preventDefault();
+        const updateClass = {
+            nameOfClass: this.state.nameOfClass
+        }
+        axios.put(`scheduler/id/${data}`, updateClass)
+          .then(res => this.loadClasses())
+          .catch(err => console.log(err));
+      };
 
         //   handleInputChange = event => {
     //       this.setState({ nameOfClass: event.target.value})
@@ -104,6 +117,27 @@ class Scheduler extends Component {
                 </label>
                 <button type ="submit">Add Class</button>
             </form> */}
+
+<List>
+                {this.state.classes.map(classUpdate => {
+                  return (
+                    <ListItem 
+                    key={classUpdate.id}>
+                      {/* <a href={"/members/:id" + member.id}> */}
+                        <strong>
+                          {classUpdate.nameOfClass} 
+                        </strong>
+                      {/* </a> */}
+                      <ModalTemplate id={classUpdate.id} updateClass={this.updateClass}/>
+                      <button type="submit" onClick={e => this.updateClass(e, classUpdate.id)}>Update Class</button>
+                      {/* <DeleteButton onClick={() => this.deleteMember(member.id)} /> */}
+                      {/* <DeleteButton onClick={this.deleteMember} /> */}
+                    </ListItem>
+                  );
+                })}
+              </List>
+
+              
             </div>
         )
     }

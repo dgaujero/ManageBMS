@@ -37,6 +37,24 @@ var admin = {
     });
     },
 
+    update: function(cols, condition, cb) {
+        console.log("admin update");
+        orm.update("classesTable", cols, condition, function(res){
+            
+            cb(res);
+            
+        });
+    },
+
+    update: function(cols, condition, cb) {
+        console.log("admin update");
+        orm.update("classesTable", cols, condition, function(res){
+            
+            cb(res);
+            
+        });
+    },
+
     delete: function(condition, cb) {
         console.log("delete member");
         orm.delete("membersTable", condition, function(res){
