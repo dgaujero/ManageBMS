@@ -42,9 +42,13 @@ router.get("/scheduler", function(req, res){
 
 router.put("/scheduler/id/:id", function(req, res) { //class update
     var condition = "id = " + req.params.id;
+    console.log(req.body)
     console.log("controller update");
     manage.update({
-        nameOfClass: req.body.nameOfClass
+        nameOfClass: req.body.nameOfClass,
+        classType: req.body.typeOfClass,
+        assignedTrainer: req.body.assignedTrainer,
+        classSize: req.body.classSize
     }, condition, function(result) {
         if (result.changedRows == 0) {
             return res.status(404).end();
