@@ -39,7 +39,7 @@ function App() {
         {/* <Navbar />
         <Wrapper> */}
         <NavTabs />
-          <Route exact path="/" component={Attendance} />
+         
           <Route exact path="/attendance" component={Attendance} />
           <Route exact path="/members" component={Members} />
           <Route exact path="/scheduler" component={Scheduler} />

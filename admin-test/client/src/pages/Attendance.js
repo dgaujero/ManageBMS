@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import fire from '../fire'
 //import NavTabs?
 // might need cols and rows
 
@@ -36,11 +37,20 @@ class Attendance extends Component {
         ))
       }
 
+      
+      logout = () => {
+        fire.auth().signOut();
+       
+    }
+    
+
       render() {
         return (
             <div>
 
                 Checked In Members: {this.renderCheckedIn()}
+
+                <button type ="submit" href="" onClick={this.logout}>Sign Out</button>
     
             </div>
         )
